@@ -1,0 +1,17 @@
+﻿@{
+	ViewData["Tittle"]="Acces Denied";
+}
+
+<div class="row">
+	<div class ="col-4 offset-4 text-center">
+		<hi class="display-4 border-bottom text-center ">@ViewData["Tittle"]</hi>
+	</div>
+</div>
+
+<div class="row">
+	<div class ="col-4 offset-4 text-center">
+		<p>You do not have acces to this page</p>
+		<a asp-action="Index" asp-controller="Home" class="btn btn-primary"> Go to Home Page</a>
+	</div>
+</div>
+

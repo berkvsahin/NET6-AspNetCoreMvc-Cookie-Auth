@@ -1,0 +1,50 @@
+﻿@{
+	ViewData["tittle"] = "Profile";
+}
+<div class="row">
+	<div class ="col-4 offset-4">
+		<hi class="display-4 border-bottom text-center ">@ViewData["Tittle"]</hi>
+	</div>
+</div>
+
+<div class="row">
+	<div class ="col-4 pt-2">
+
+		<div asp-validation-summary=All class="text-danger small"></div>
+
+		<form method="post" asp-action="ProfileUpdateFullName">
+			<div class="form-group">
+				<label class="form-label small">Name Surname</label>
+				<div class="input-group">
+					<input name="fullname" type="text" class="form-control" placeholder="James Bond" value="@ViewData["fullname"]">
+					<button class="btn btn-secondary" type="submit">Save</button>
+				</div>
+				@if(ViewData["result"]!= null && ViewData["result"] == "UpdateFullName")
+				{
+					<span class="alert-info small">Name and Surname is updated.</span>
+				}
+			</div>
+		</form>
+
+		<form method="post" asp-action="ProfileUpdatePassword">
+			<div class="form-group">
+				<label class="form-label small">New Password</label>
+				<div class="input-group">
+					<input name="password" type="password" class="form-control" placeholder="Password">
+					<button class="btn btn-secondary" type="submit">Save</button>
+				</div>
+				@if(ViewData["result"]!= null)
+				{
+					@if(ViewData["result"] == "UpdatePassword")
+					{
+						<span class="alert-info small">Password is updated.</span>
+					}
+				   @if(ViewData["result"] == "SamePassword")
+					{
+						<span class="alert-warning small">The new password is the same as your last password.</span>
+					}
+				}
+			</div>
+		</form>
+	</div>
+</div>
